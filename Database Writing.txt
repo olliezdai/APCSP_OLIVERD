@@ -1,0 +1,23 @@
+What is a database?
+
+A database is a collection of data which is organized in some way,
+usually maximizing efficiency. They work with any type of data, from numbers
+to advanced data formats, like video files. The data can often be subdivided 
+into fields. Databases have many uses, from storing an inventory to 
+organizing customer information. There are many types of databases, each with
+a unique purpose.
+
+Types of databases include:
+Relational, Operational, Distributed, Cloud, and Centralized
+
+What does relational mean in databases?
+A relational database is an organized set of tables which contain data. 
+These tables are structured in a way so that data can be accessed or organized
+more efficiently than in "flat tables." Records can refer to entities, which
+are listed in other tables. For example, in a normal table, you would have to
+list the peoples' names and IDs. In a relational table, you could just put in
+their ID and it would link to a table that includes names, ages, jobs, and more
+information about the person. If you altered the essence of the "age" field,
+relational databases allow you to change just the age entity table and it will
+be up to date. A normal table would require that you edit every person's
+details.
