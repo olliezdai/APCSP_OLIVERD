@@ -71,6 +71,56 @@
 						}
 						echo "</table>";
 						
+						$queryActors = mysqli_query($connection,
+							"SELECT first_name, last_name, count(*) films FROM actor JOIN film_actor USING (actor_id) 
+							GROUP BY actor_id, first_name, last_name ORDER BY films DESC LIMIT 10"
+						);
+						
+						#START ACTOR TABLE
+						echo "</br>";
+						echo "<b>TOP 10 Actors: </b><br/>";
+						echo "<table style=\"width:25%; border: 1px solid black;border-collapse: collapse;\">
+								<tr style=\"border: 1px solid black;\">
+									<td ><b>Name</b></td>
+									<td style=\"border: 1px solid black;\"><b>Films</b></td>
+								</tr>";
+						while($row = mysqli_fetch_array($queryActors)){
+							echo "
+								<tr>
+									<td>{$row['first_name']} {$row['last_name']}</td>
+									<td style=\"border-left: 1px solid black;border-right: 1px solid black; padding-left: 8px;\">{$row['films']}</td>
+								</tr>
+							";
+						}
+						echo "</table>";
+						#END ACTOR TABLE
+						
+						
+						$queryMovies = mysqli_query($connection,
+							"SELECT title, count(*) rentals FROM rental JOIN inventory USING (inventory_id) JOIN film USING (film_id) GROUP BY title ORDER BY rentals DESC LIMIT 10;"
+						);
+						
+						#START MOVIES TABLE
+						echo "</br>";
+						echo "<b>TOP 10 Movies: </b><br/>";
+						echo "<table style=\"width:25%; border: 1px solid black;border-collapse: collapse;\">
+								<tr style=\"border: 1px solid black;\">
+									<td ><b>Name</b></td>
+									<td style=\"border: 1px solid black;\"><b>Rentals</b></td>
+								</tr>";
+						while($row = mysqli_fetch_array($queryMovies)){
+							echo "
+								<tr>
+									<td>{$row['title']}</td>
+									<td style=\"border-left: 1px solid black;border-right: 1px solid black; padding-left: 8px;\">{$row['rentals']}</td>
+								</tr>
+							";
+						}
+						echo "</table>";
+						#END MOVIES TABLE
+						
+						
+						
 					?>
 					<br />
 					<p><a href="index.php">Home</a></p>
